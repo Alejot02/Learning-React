@@ -1,22 +1,27 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Exercises 1a</title>
+    <title>Exercises 1h</title>
   </head>
   <body>
     <div class="js-container"></div>
+
+    <script src="https://unpkg.com/supersimpledev/dayjs.js"></script>
 
     <script src="https://unpkg.com/supersimpledev/react.js"></script>
     <script src="https://unpkg.com/supersimpledev/react-dom.js"></script>
 
     <script src="https://unpkg.com/supersimpledev/babel.js"></script>
     <script type="text/babel">
-      // 1a. Display a button on the website with the text "Good job!" inside the button.
+      // 1h. Continuing from 1g, insert the date in a paragraph element, and display it on the wesite like: "Today is [DATE]"
 
-      const button = <button>Good job!</button>;
+      const date = dayjs().format("MMMM D");
+      console.log(date);
+
+      const paragraph = <p>Today is {date}</p>;
 
       const container = document.querySelector(".js-container");
-      ReactDOM.createRoot(container).render(button);
+      ReactDOM.createRoot(container).render(paragraph);
     </script>
   </body>
 </html>

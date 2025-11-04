@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Exercises 1a</title>
+    <title>Exercises 1b</title>
   </head>
   <body>
     <div class="js-container"></div>
@@ -11,12 +11,13 @@
 
     <script src="https://unpkg.com/supersimpledev/babel.js"></script>
     <script type="text/babel">
-      // 1a. Display a button on the website with the text "Good job!" inside the button.
+      // 1b. Display a paragraph with the text "My name is [NAME]!".
 
-      const button = <button>Good job!</button>;
+      const name = "Jhon";
+      const paragraph = <p>My name is {name}</p>;
 
       const container = document.querySelector(".js-container");
-      ReactDOM.createRoot(container).render(button);
+      ReactDOM.createRoot(container).render(paragraph);
     </script>
   </body>
 </html>
