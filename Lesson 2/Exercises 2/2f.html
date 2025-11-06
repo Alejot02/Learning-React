@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Exercises 2f</title>
+  </head>
+  <body>
+    <div class="js-container"></div>
+
+    <script src="https://unpkg.com/supersimpledev/react.js"></script>
+    <script src="https://unpkg.com/supersimpledev/react-dom.js"></script>
+
+    <script src="https://unpkg.com/supersimpledev/babel.js"></script>
+    <script type="text/babel">
+      // 2f. Continuing from 2e. Display 2 more products on the website: tennis balls and a t-shirt. Create a <ProductDetails> component, and use props to make it reusable. Then, display 3 <ProductDetails> on the website (socks, tennis balls, and t-shirt).  
+
+      function ProductDetails({ productName, productPrice }) {
+        return(
+          <>
+            <p>{productName}</p>
+            <p>Price: ${productPrice}</p>
+            <button>Add to Cart</button>
+          </>
+        )
+      }  
+
+
+      function App() {
+        return (
+          <>
+            <ProductDetails 
+              productName="Cotton Socks" 
+              productPrice="10.90" 
+            />
+            <ProductDetails 
+              productName="Tennis Balls" 
+              productPrice="6.00" 
+            />
+            <ProductDetails 
+              productName="Plain T-Shirt" 
+              productPrice="7.99" 
+            />
+          </>
+        );
+      }
+
+
+      const container = document.querySelector(".js-container");
+      ReactDOM.createRoot(container).render(<App />);
+    </script>
+  </body>
+</html>

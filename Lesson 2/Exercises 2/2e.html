@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Exercises 2e</title>
+  </head>
+  <body>
+    <div class="js-container"></div>
+
+    <script src="https://unpkg.com/supersimpledev/react.js"></script>
+    <script src="https://unpkg.com/supersimpledev/react-dom.js"></script>
+
+    <script src="https://unpkg.com/supersimpledev/babel.js"></script>
+    <script type="text/babel">
+      // 2e. Let's say we're creating an e/commerce app, and one of the products is socks. Create an <App> component and display the details from the design in "2e image" in the website.  
+
+      function App() {
+        return (
+          <>
+            <p>Cotton Socks</p>
+            <p>Price: $10.90</p>
+            <button>Add to Cart</button>
+          </>
+        );
+      }
+
+
+      const container = document.querySelector(".js-container");
+      ReactDOM.createRoot(container).render(<App />);
+    </script>
+  </body>
+</html>
