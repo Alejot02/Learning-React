@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Exercises 3d</title>
+  </head>
+  <body>
+    <div class="js-container"></div>
+
+    <script src="https://unpkg.com/supersimpledev/react.js"></script>
+    <script src="https://unpkg.com/supersimpledev/react-dom.js"></script>
+
+    <script src="https://unpkg.com/supersimpledev/babel.js"></script>
+    <script type="text/babel">
+      // 3d. Separate the counter into a component, then use this component to create 2 counters. Each conuter should have their own count.
+
+
+      function CounterButton() {
+        const [ count, setCount ] = React.useState(0)
+        
+        function increaseCount() {
+          setCount(count + 1);
+        }
+
+        return (
+          <button onClick={increaseCount} >
+            {count !== 1 ? <>Clicked {count} times</> : <>Clicked {count} time</> }
+          </button>
+        )
+      }
+
+      function App() {
+        return (
+          <>
+            <CounterButton />          
+            <CounterButton />
+          </>
+                    
+        );
+      }  
+
+
+      const container = document.querySelector(".js-container");
+      ReactDOM.createRoot(container).render(<App />);
+    </script>
+  </body>
+</html>
