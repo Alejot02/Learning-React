@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Exercises 4d</title>
+    <style>
+      body {
+        font-family: Arial, Helvetica, sans-serif;
+      }
+
+      .p-title {
+        font-weight: bold;
+      }
+
+      .form-input {
+        width: 200px;
+        padding: 6px;
+        padding-left: 10px;
+        border: 1px solid black;
+        border-radius: 3px;
+        margin-top: 5px;
+        margin-bottom: 5px;
+      }
+
+      .button-primary {
+        background-color: rgb(0, 123, 255);
+        padding: 9px;
+        border: none;
+        border-radius: 6px;
+        margin-right: 6px;
+        margin-top: 10px;
+        color: white;
+
+        cursor: pointer;
+      }
+
+      .button-hide{
+        margin-left: 5px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="js-container"></div>
+
+    <script src="https://unpkg.com/supersimpledev/react.js"></script>
+    <script src="https://unpkg.com/supersimpledev/react-dom.js"></script>
+
+    <script src="https://unpkg.com/supersimpledev/babel.js"></script>
+    <script type="text/babel">
+      // 4d. Add a button beside the password to show/hide password. 
+
+      function LoginForm() {
+        const [ inputType, setInputType ] = React.useState('text');
+
+        function hidePassword(){
+          setInputType(inputType === 'text' ? 'password' : 'text')
+        }
+
+        return (
+          <>
+            <div>
+              <input className="form-input" type="text" placeholder="Email"/>
+            </div>
+            <div>
+              <input className="form-input" type={inputType} placeholder="Password"/>
+              <button onClick={hidePassword} className="button-hide">Hide</button>
+            </div>
+            <button className="button-primary">Login</button>
+            <button className="button-primary">Sign up</button>
+          </>
+        );
+      }
+
+      function App() {
+        return (
+          <>
+            <p className="p-title">Hello, welcome to my website</p>
+            <LoginForm />
+          </>
+        );
+      }
+
+
+      const container = document.querySelector(".js-container");
+      ReactDOM.createRoot(container).render(<App />);
+    </script>
+  </body>
+</html>
