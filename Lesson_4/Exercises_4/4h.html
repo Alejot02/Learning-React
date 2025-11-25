@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Exercises 4h</title>
+  </head>
+  <body>
+    <div class="js-container"></div>
+
+    <script src="https://unpkg.com/supersimpledev/react.js"></script>
+    <script src="https://unpkg.com/supersimpledev/react-dom.js"></script>
+
+    <script src="https://unpkg.com/supersimpledev/babel.js"></script>
+    <script type="text/babel">
+      // 4h Create a counter app, add a reset button, and a auto Click button that will click the button every second. (use useRef)
+
+
+      function App() {
+        const [ count, setCount ] = React.useState(0);
+
+        const autoClickButton = React.useRef();
+
+
+        function increaseCount() {
+          setCount(count + 1);
+        }
+
+        function resetButton() {
+          setCount(0);
+        }
+
+        function autoClick() {
+          setInterval(()=> {
+            autoClickButton.current.click()
+          }, 1000);
+        }
+
+        return (
+          <>
+            <button onClick={increaseCount} ref={autoClickButton}>
+            Clicked {count} {count !== 1 ? <>times</> : <>time</>}
+            </button>
+            <button onClick={resetButton}>Reset</button>
+            <button onClick={autoClick}>Auto Click</button>
+          </>
+          
+        );
+      }  
+
+      
+
+      const container = document.querySelector(".js-container");
+      ReactDOM.createRoot(container).render(<App />);
+    </script>
+  </body>
+</html>
