@@ -14,6 +14,11 @@
         color: rgb(157, 156, 156);
       }
 
+      .img-loading {
+        height: 40px;
+        margin: -15px;
+      }
+
       .send-button {
         background-color: rgb(25, 135, 84);
         color: white;
@@ -91,9 +96,9 @@
 
     <script src="https://unpkg.com/supersimpledev/babel.js"></script>
     <script type="text/babel">
-      // Add a loading spinner when the Chatbot is loading a response.
+      // 4k & 4l Add a loading spinner when the Chatbot is loading a response, create a custom hook for the autoscroll.
 
-      // Work in progress in this file.
+      // Modified lines 127, created the function in line 227
 
 
       function ChatInput({ chatMessages, setChatMessages }) {
@@ -119,7 +124,7 @@
               id: crypto.randomUUID()
             },
             {
-              message: 'Loading message...',
+              message: <img className='img-loading' src="loading-spinner.gif"></img>,
               sender: 'robot',
               id: crypto.randomUUID()
             }
@@ -210,15 +215,29 @@
       }
 
       function ChatMessages({ chatMessages }) {
-        const chatMessagesRef = React.useRef(null);
+        // const chatMessagesRef = React.useRef(null);
 
-        React.useEffect(() => {
-          const containerElem = chatMessagesRef.current;
-          if (containerElem) {
-            containerElem.scrollTop = containerElem.scrollHeight;
-          }
-        }, [chatMessages] );
+        // React.useEffect(() => {
+        //   const containerElem = chatMessagesRef.current;
+        //   if (containerElem) {
+        //     containerElem.scrollTop = containerElem.scrollHeight;
+        //   }
+        // }, [chatMessages] );
 
+        function useAutoScroll(dependencies) {
+            const chatMessagesRef = React.useRef(null);
+
+            React.useEffect(() => {
+              const containerElem = chatMessagesRef.current;
+              if (containerElem) {
+                containerElem.scrollTop = containerElem.scrollHeight;
+              }
+            }, dependencies);
+
+            return chatMessagesRef
+        };
+
+        const chatMessagesRef = useAutoScroll([chatMessages])
 
         return (
           <div className="chat-messages-container" ref={chatMessagesRef}>
